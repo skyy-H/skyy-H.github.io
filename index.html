@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKY — Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0e0e0e;
+    color: #f0ede6;
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    border-bottom: 0.5px solid rgba(240,237,230,0.12);
+    position: sticky;
+    top: 0;
+    background: rgba(14,14,14,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: #f0ede6;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul a {
+    color: rgba(240,237,230,0.45);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: #f0ede6; }
+
+  .hero {
+    padding: 7rem 3rem 4rem;
+    max-width: 860px;
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c8a97e;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.04;
+    font-weight: 400;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #c8a97e;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: rgba(240,237,230,0.5);
+    line-height: 1.75;
+    max-width: 460px;
+    font-weight: 300;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: #c8a97e;
+    color: #0e0e0e;
+    padding: 0.75rem 2rem;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.82; }
+
+  .btn-outline {
+    background: transparent;
+    color: #f0ede6;
+    padding: 0.75rem 2rem;
+    border: 0.5px solid rgba(240,237,230,0.28);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.07em;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: border-color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: rgba(240,237,230,0.65); }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(240,237,230,0.28);
+    padding: 0 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .divider {
+    border: none;
+    border-top: 0.5px solid rgba(240,237,230,0.09);
+    margin: 3rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: rgba(240,237,230,0.07);
+    margin: 0 3rem;
+  }
+
+  .card {
+    background: #0e0e0e;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card:hover { background: #181818; }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #171717;
+    border: 0.5px solid rgba(240,237,230,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .placeholder-text {
+    font-size: 0.68rem;
+    color: rgba(240,237,230,0.18);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .card-cat {
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c8a97e;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #f0ede6;
+  }
+
+  .card-desc {
+    font-size: 0.78rem;
+    color: rgba(240,237,230,0.38);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .about-section {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 640px) {
+    .about-section { grid-template-columns: 1fr; }
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { padding: 4rem 1.5rem 2rem; }
+    .grid { margin: 0 1.5rem; }
+    .section-label { padding: 0 1.5rem; }
+    .divider { margin: 2rem 1.5rem; }
+    .about-section { padding: 2rem 1.5rem; }
+    .contact-section { padding: 3rem 1.5rem; }
+    .footer { padding: 1.2rem 1.5rem; }
+  }
+
+  .about-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .about-section p {
+    font-size: 0.9rem;
+    color: rgba(240,237,230,0.48);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(240,237,230,0.07);
+  }
+
+  .skill-item {
+    background: #0e0e0e;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.8rem;
+    color: rgba(240,237,230,0.48);
+    letter-spacing: 0.03em;
+  }
+
+  .skill-item span {
+    display: block;
+    font-size: 0.65rem;
+    color: #c8a97e;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-section {
+    padding: 4rem 3rem;
+    border-top: 0.5px solid rgba(240,237,230,0.09);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .contact-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 400;
+    max-width: 420px;
+    line-height: 1.12;
+  }
+
+  .contact-section h2 em { color: #c8a97e; font-style: italic; }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-end;
+  }
+
+  .contact-links a {
+    color: rgba(240,237,230,0.38);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover { color: #c8a97e; }
+
+  .footer {
+    padding: 1.4rem 3rem;
+    border-top: 0.5px solid rgba(240,237,230,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer p {
+    font-size: 0.7rem;
+    color: rgba(240,237,230,0.18);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SKY</div>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <p class="hero-tag">Graphic Designer · India</p>
+  <h1>Visuals that<br><em>feel</em> different</h1>
+  <p>Posters, social media content, logos, and brand identity — built for businesses and creators who refuse to blend in.</p>
+  <div class="cta-row">
+    <button class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">View Work</button>
+    <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+  </div>
+</section>
+
+<hr class="divider">
+
+<p class="section-label" id="work">Selected Work</p>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-img">
+      <!-- APNI IMAGE YAHAN DAALO:
+           <img src="images/project1.png" alt="Project 1">
+           YA seedha: <img src="YOUR_IMAGE_LINK" alt="...">
+      -->
+      <div class="placeholder-text">Apni image<br>yahan daalo</div>
+    </div>
+    <div class="card-cat">Poster Design</div>
+    <div class="card-title">Project ka naam</div>
+    <div class="card-desc">Kis brand ke liye banaya, kya tha goal — 1-2 lines.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <div class="placeholder-text">Apni image<br>yahan daalo</div>
+    </div>
+    <div class="card-cat">Social Media</div>
+    <div class="card-title">Project ka naam</div>
+    <div class="card-desc">Kis brand ke liye banaya, kya tha goal — 1-2 lines.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <div class="placeholder-text">Apni image<br>yahan daalo</div>
+    </div>
+    <div class="card-cat">Brand Identity</div>
+    <div class="card-title">Project ka naam</div>
+    <div class="card-desc">Kis brand ke liye banaya, kya tha goal — 1-2 lines.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <div class="placeholder-text">Apni image<br>yahan daalo</div>
+    </div>
+    <div class="card-cat">Poster Design</div>
+    <div class="card-title">Project ka naam</div>
+    <div class="card-desc">Kis brand ke liye banaya, kya tha goal — 1-2 lines.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <div class="placeholder-text">Apni image<br>yahan daalo</div>
+    </div>
+    <div class="card-cat">Social Media</div>
+    <div class="card-title">Project ka naam</div>
+    <div class="card-desc">Kis brand ke liye banaya, kya tha goal — 1-2 lines.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-img">
+      <div class="placeholder-text">Apni image<br>yahan daalo</div>
+    </div>
+    <div class="card-cat">Mix</div>
+    <div class="card-title">Project ka naam</div>
+    <div class="card-desc">Kis brand ke liye banaya, kya tha goal — 1-2 lines.</div>
+  </div>
+
+</div>
+
+<hr class="divider">
+
+<section class="about-section" id="about">
+  <div>
+    <h2>Hi, I'm SKY</h2>
+    <p>
+      I'm a graphic designer based in India, working under the name <strong>sky.fresh.feed</strong>. I create bold, intentional visuals — posters, social media kits, logos, and brand identities that help businesses and creators stand out.<br><br>
+      Design, for me, isn't just aesthetics — it's communication. Every project starts with understanding the brand and ends with something that truly feels like them.
+    </p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-item"><span>Tools</span>Canva Pro</div>
+    <div class="skill-item"><span>Tools</span>Adobe Illustrator</div>
+    <div class="skill-item"><span>Skills</span>Poster Design</div>
+    <div class="skill-item"><span>Skills</span>Logo & Branding</div>
+    <div class="skill-item"><span>Skills</span>Social Media Kits</div>
+    <div class="skill-item"><span>Skills</span>Typography</div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <h2>Let's build something <em>together</em></h2>
+  <div class="contact-links">
+    <a href="mailto:skyy.ff99@gmail.com">skyy.ff99@gmail.com</a>
+    <a href="https://instagram.com/skyy.ff99" target="_blank">instagram.com/skyy.ff99</a>
+  </div>
+</section>
+
+<div class="footer">
+  <p>© 2026 SKY · sky.fresh.feed</p>
+  <p>India</p>
+</div>
+
+</body>
+</html>
